@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+//MUESTRA USUARIOS//
+
 public class EjercicioClase1 {
 	final static String RUTA_PASSWD = "/etc/passwd";
 
