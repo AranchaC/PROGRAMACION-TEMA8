@@ -1,7 +1,7 @@
 package ExcepcionesClase;
 
 public class PruebaExcepciones {
-
+//comit prueba
 	public static void main(String[] args) {
 		String linea = " 354";
 		int num;
