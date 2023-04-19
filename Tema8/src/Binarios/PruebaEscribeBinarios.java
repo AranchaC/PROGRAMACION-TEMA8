@@ -27,6 +27,6 @@ public class PruebaEscribeBinarios {
 			e1.printStackTrace();
 		}
 ////
-	}
+	}//
 
 }
