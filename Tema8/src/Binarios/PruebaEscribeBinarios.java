@@ -26,7 +26,7 @@ public class PruebaEscribeBinarios {
 		catch (IOException e1) {
 			e1.printStackTrace();
 		}
-
+//
 	}
 
 }
