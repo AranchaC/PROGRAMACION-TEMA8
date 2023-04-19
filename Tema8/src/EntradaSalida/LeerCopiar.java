@@ -8,15 +8,15 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 public class LeerCopiar {
-	final static String RUTA_ORIGEN = "prueba3";
-	final static String RUTA_DESTINO = "prueba3bis";
 
 	public static void main(String[] args) {
-		File ruta = new File(RUTA_ORIGEN);
-		File ruta2 = new File(RUTA_DESTINO);
+		final String rutaOrigen = "prueba3";
+		final String rutaDestino = rutaOrigen + "bis";
+		final String charSetOrigen = "UTF-8";
+		final String charSetDestino = "ISO-8859-1";	
 		
-		try (BufferedReader entrada = new BufferedReader(new FileReader(ruta,Charset.forName("UTF-8")));
-				FileWriter salida = new FileWriter (ruta2,Charset.forName("ISO-8859-1"));
+		try (BufferedReader entrada = new BufferedReader(new FileReader(rutaOrigen,Charset.forName(charSetOrigen)));
+				FileWriter salida = new FileWriter (rutaDestino,Charset.forName(charSetDestino));
 				){
 			String linea;
 			while ( (linea = entrada.readLine()) !=null) {
