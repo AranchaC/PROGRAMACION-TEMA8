@@ -11,7 +11,8 @@ public class PruebaEscribeBinarios {
 
 	public static void main(String[] args) {
 		
-		try (DataOutputStream salida = new DataOutputStream(new FileOutputStream(RUTA_BINARIO)))
+		try (DataOutputStream salida = 
+				new DataOutputStream(new FileOutputStream(RUTA_BINARIO)))
 		{
 			salida.writeInt(34);
 			salida.writeBoolean(false);
@@ -19,7 +20,7 @@ public class PruebaEscribeBinarios {
 			salida.writeUTF("Hola");
 			salida.writeLong(Integer.MAX_VALUE);
 		} 
-		//Imporotante el orden de las excepciones.
+		//Importante el orden de las excepciones.
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} 

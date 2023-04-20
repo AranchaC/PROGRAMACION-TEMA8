@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Usuarios de la app</comment>
+<entry key="layllon">Luis Ayllon</entry>
+<entry key="slinan">Sara Liñan</entry>
+<entry key="achicharro">Arancha Chicharro</entry>
+<entry key="rsanchez">Ruben Sanchez</entry>
+</properties>
