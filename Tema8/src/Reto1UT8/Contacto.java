@@ -3,7 +3,7 @@ package Reto1UT8;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Contacto {
+public class Contacto implements Comparable<Contacto> {
 
 	protected String nombre;
 	protected String telefono;
@@ -25,8 +25,7 @@ public class Contacto {
 	public String getNombre() {
 		return nombre;
 	}
-	
-	
+		
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -52,9 +51,7 @@ public class Contacto {
 			return false;
 		Contacto other = (Contacto) obj;
 		return Objects.equals(nombre, other.nombre);
-	}
-	
-	
+	}	
 
 	// Lee un nuevo Contacto desde teclado.
 	// Devuelve null si se dejan vacíos el nombre o el teléfono
@@ -66,5 +63,10 @@ public class Contacto {
 		String telefono = entrada.nextLine();
 		if (telefono.isBlank()) return null;
 		return new Contacto(nombre,telefono);
+	}
+
+	@Override
+	public int compareTo(Contacto o) {
+		return this.nombre.compareTo(o.nombre);
 	}
 }

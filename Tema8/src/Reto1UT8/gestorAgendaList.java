@@ -7,10 +7,11 @@ import java.util.Scanner;
 public class gestorAgendaList {
 
 		private static Scanner entrada = new Scanner(System.in);
-
+		private final static String RUTA = "agenda.csv";
+		
 		public static void main(String[] args) {
-			AgendaList agenda = new AgendaList(10);
-			agenda.cargaDesdeCSV("agenda.csv");
+			AgendaList agenda = new AgendaList();
+			agenda.cargaDesdeCSV(RUTA);
 
 			int opcion;
 			while ( (opcion=menuPrincipal(!agenda.vacia()))!= 0) {
@@ -21,10 +22,12 @@ public class gestorAgendaList {
 				case 2:
 					Contacto nuevo = Contacto.deTeclado(entrada);
 					if (nuevo!=null) agenda.anadeContacto(nuevo);
+					agenda.guradaEnCSV(RUTA);
 					break;
 				case 3:
 					int pos = menuPosicion(agenda.numContactos());
 					agenda.borraContacto(pos-1); 
+					agenda.guradaEnCSV(RUTA);
 					// el usuario ve posiciones desde 12
 
 				}	

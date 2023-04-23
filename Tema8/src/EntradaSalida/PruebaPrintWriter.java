@@ -11,7 +11,9 @@ public class PruebaPrintWriter {
 	public static void main(String[] args) {
 		//System.out.println(System.out.getClass());
 		
-		try (PrintWriter salida = new PrintWriter(new FileWriter (RUTA_ARCHIVO,Charset.forName("UTF-8"),true))){			
+		try (PrintWriter salida = new PrintWriter(
+				new FileWriter (RUTA_ARCHIVO,Charset.forName
+						("UTF-8"),true))){			
 			salida.println("Buenos días.");
 			salida.println("Soy pepito grillo.");
 

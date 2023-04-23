@@ -15,8 +15,12 @@ public class LeerCopiar {
 		final String charSetOrigen = "UTF-8";
 		final String charSetDestino = "ISO-8859-1";	
 		
-		try (BufferedReader entrada = new BufferedReader(new FileReader(rutaOrigen,Charset.forName(charSetOrigen)));
-				FileWriter salida = new FileWriter (rutaDestino,Charset.forName(charSetDestino));
+		try (BufferedReader entrada = 
+				new BufferedReader
+				(new FileReader(rutaOrigen,Charset.forName(charSetOrigen)));
+				FileWriter salida = 
+						new FileWriter 
+						(rutaDestino,Charset.forName(charSetDestino));
 				){
 			String linea;
 			while ( (linea = entrada.readLine()) !=null) {

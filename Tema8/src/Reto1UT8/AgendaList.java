@@ -5,7 +5,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -35,6 +37,7 @@ public class AgendaList {
 	}
 	
 	public String listaContactos() {
+		contactos.sort(null);
 		StringBuilder res = new StringBuilder();
 		for (int i=0; i<contactos.size(); i++) {
 			// Muestra posiciones de 1 a numelementos
@@ -71,34 +74,42 @@ public class AgendaList {
 		File ruta = new File (fileName);
 		
 		try (BufferedReader entrada = 
-				new BufferedReader (new FileReader(ruta)))
-		{
+				new BufferedReader (new FileReader(ruta))){
 			String linea;
 			String nombre, telef;
 			
-			while ((linea=entrada.readLine()) !=null) {
-				
+			while ((linea=entrada.readLine()) != null) {				
 				String[] lineaSep = linea.split(",");
 				nombre =lineaSep[0];
 				telef = lineaSep[1];
 				
 				Contacto contacto = new Contacto (nombre,telef);
-				contactos.add(contacto);
-				
-			System.out.println(contacto);
-				return true;
+				contactos.add(contacto);	
+
 			}//while
+			return true;
+			
 		} //try
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			return false;
-		}//catch
+		}//catch			
+	}//cargaCSV
+	
+	public boolean guradaEnCSV (String fileName) {
+		try (PrintWriter salida = 
+				new PrintWriter(new FileWriter (fileName));) {
+			StringBuilder res = new StringBuilder();
+			for (int i=0; i<contactos.size(); i++) {
+				salida.println(res);
+			}
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		
-		
-		
-		return false ;
-		
-	}
+		return false;	
+	}//guardaCSV
 
 }
