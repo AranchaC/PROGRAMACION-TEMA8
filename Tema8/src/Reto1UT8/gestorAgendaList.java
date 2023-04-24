@@ -8,10 +8,12 @@ public class gestorAgendaList {
 
 		private static Scanner entrada = new Scanner(System.in);
 		private final static String RUTA = "agenda.csv";
+		private final static String RUTA_SER = "agenda.ser.xps";
 		
 		public static void main(String[] args) {
 			AgendaList agenda = new AgendaList();
 			agenda.cargaDesdeCSV(RUTA);
+			//agenda.cargaDesdeArchivoSerializado(RUTA_SER);
 
 			int opcion;
 			while ( (opcion=menuPrincipal(!agenda.vacia()))!= 0) {
@@ -32,6 +34,7 @@ public class gestorAgendaList {
 
 				}	
 			}
+			agenda.guardaEnCSV(RUTA);
 			System.out.println("Bye bye ...");
 		} // main
 

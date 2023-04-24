@@ -1,10 +1,12 @@
 package Reto1UT8;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Contacto implements Comparable<Contacto> {
-
+public class Contacto implements Comparable<Contacto>, Serializable {
+	
+	private static final long serialVersionUID = -3545287747348204339L;
 	protected String nombre;
 	protected String telefono;
 
@@ -71,6 +73,18 @@ public class Contacto implements Comparable<Contacto> {
 
 	@Override
 	public int compareTo(Contacto o) {
-		return this.nombre.compareTo(o.nombre);
+		return this.nombre.compareToIgnoreCase(o.nombre);
+	}
+	
+	public static Contacto contactoFromCSV(String linea) {
+		String nombre, telef;
+		
+		String[] lineaSep = linea.split(",");
+		nombre =lineaSep[0];
+		telef = lineaSep[1];
+		
+		Contacto contacto = new Contacto (nombre,telef);
+
+		return contacto;
 	}
 }

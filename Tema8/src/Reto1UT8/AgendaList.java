@@ -3,11 +3,14 @@ package Reto1UT8;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,7 +18,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class AgendaList {
+public class AgendaList implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	protected static final int TAMANO_POR_DEFECTO = 100;
 
@@ -38,7 +43,7 @@ public class AgendaList {
 	}
 	
 	public String listaContactos() {
-		contactos.sort(null);
+		contactos.sort(null) ;
 		StringBuilder res = new StringBuilder();
 		for (int i=0; i<contactos.size(); i++) {
 			// Muestra posiciones de 1 a numelementos
@@ -77,19 +82,12 @@ public class AgendaList {
 		try (BufferedReader entrada = 
 				new BufferedReader (new FileReader(ruta))){
 			String linea;
-			String nombre, telef;
 			
-			while ((linea=entrada.readLine()) != null) {				
-				String[] lineaSep = linea.split(",");
-				nombre =lineaSep[0];
-				telef = lineaSep[1];
-				
-				Contacto contacto = new Contacto (nombre,telef);
+			while ((linea=entrada.readLine()) != null) {								
+				Contacto contacto = Contacto.contactoFromCSV(linea);
 				contactos.add(contacto);	
-
 			}//while
-			return true;
-			
+			return true;		
 		} //try
 		catch (IOException e) {
 			return false;
@@ -101,15 +99,34 @@ public class AgendaList {
 				new PrintWriter(new FileWriter (fileName));) {
 			for (int i=0; i<contactos.size(); i++) {
 				salida.println(contactos.get(i).formatoAgenda() );
+			}//for	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}//catch				
+		return false;	
+	}//guardaCSV
+	
+	public boolean cargaDesdeArchivoSerializado(String fileName) {
+		File ruta = new File (fileName);
+		try (ObjectInputStream entrada = new ObjectInputStream(
+				new FileInputStream(ruta))) {
+			try {
+				ArrayList<Contacto> contact =
+						(ArrayList<Contacto>) entrada.readObject();
+				contactos.addAll(contact);
+				
+				
+			} catch (ClassNotFoundException e) {
+
+				e.printStackTrace();
 			}
-			
-			
+			return true;						
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		return false;	
-	}//guardaCSV
+		return false;		
+	}
 
 }
