@@ -22,12 +22,12 @@ public class gestorAgendaList {
 				case 2:
 					Contacto nuevo = Contacto.deTeclado(entrada);
 					if (nuevo!=null) agenda.anadeContacto(nuevo);
-					agenda.guradaEnCSV(RUTA);
+					agenda.guardaEnCSV(RUTA);
 					break;
 				case 3:
 					int pos = menuPosicion(agenda.numContactos());
 					agenda.borraContacto(pos-1); 
-					agenda.guradaEnCSV(RUTA);
+					agenda.guardaEnCSV(RUTA);
 					// el usuario ve posiciones desde 12
 
 				}	
@@ -48,7 +48,7 @@ public class gestorAgendaList {
 			int opcion;
 			String textoMenu = "MENÚ PRINCIPAL:\n"
 					+ "0. SALIR\n"
-					+ "1. LISTAR CONTACTOS\n"
+					+ "1. LISTAR CONTACTOS ORDENADOS\n"
 					+ "2. NUEVO CONTACTO\n";
 			if (opcionBorrar) {
 				textoMenu += "3. BORRAR CONTACTO\n";

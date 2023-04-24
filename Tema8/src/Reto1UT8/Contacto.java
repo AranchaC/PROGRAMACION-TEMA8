@@ -35,6 +35,10 @@ public class Contacto implements Comparable<Contacto> {
 	public String toString() {
 		return "Nombre: " + nombre + ", Telefono: " + telefono;
 	}
+	
+	public String formatoAgenda() {
+		return nombre+","+telefono;
+	}
 		
 	@Override
 	public int hashCode() {

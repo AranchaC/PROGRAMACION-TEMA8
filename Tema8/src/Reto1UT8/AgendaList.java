@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -95,12 +96,11 @@ public class AgendaList {
 		}//catch			
 	}//cargaCSV
 	
-	public boolean guradaEnCSV (String fileName) {
+	public boolean guardaEnCSV (String fileName) {
 		try (PrintWriter salida = 
 				new PrintWriter(new FileWriter (fileName));) {
-			StringBuilder res = new StringBuilder();
 			for (int i=0; i<contactos.size(); i++) {
-				salida.println(res);
+				salida.println(contactos.get(i).formatoAgenda() );
 			}
 			
 			

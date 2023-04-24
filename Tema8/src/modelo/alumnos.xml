@@ -1,0 +1,22 @@
+<alumnos>
+	<alumno dni='1a'>
+		<nombre>pedro</nombre> 
+		<nota>4.5</nota>
+	</alumno>
+	<alumno dni='2b'>
+		<nombre>ana</nombre>
+		<nota>8.7</nota>
+		<nivel>CFGM</nivel>
+		<observaciones>es muy maja</observaciones>
+	</alumno>
+	<alumno dni='3c'>
+		<nombre>juan</nombre>
+		<nota>6.5</nota>
+		<observaciones>es muy majo</observaciones>
+	</alumno>
+	<alumno dni='4d'>
+		<nombre>pepe</nombre>
+		<nota>9.0</nota>
+		<nivel>CFGS</nivel>
+	</alumno>
+</alumnos>

@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import Modelo.Producto;
+import ModeloYo.Producto;
 
 public class PruebaSerializar2 {
 	static final String RUTA_SER = "productos.ser";

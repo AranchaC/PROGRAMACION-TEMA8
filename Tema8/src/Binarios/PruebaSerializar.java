@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import Modelo.Producto;
+import ModeloYo.Producto;
 
 public class PruebaSerializar {
 	static final String RUTA_SER = "productos.ser";
