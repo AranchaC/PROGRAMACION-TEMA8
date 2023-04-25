@@ -8,12 +8,13 @@ public class gestorAgendaList {
 
 		private static Scanner entrada = new Scanner(System.in);
 		private final static String RUTA = "agenda.csv";
-		private final static String RUTA_SER = "agenda.ser.xps";
+		private final static String RUTA_SER = "agenda.ser";
 		
 		public static void main(String[] args) {
 			AgendaList agenda = new AgendaList();
-			agenda.cargaDesdeCSV(RUTA);
-			//agenda.cargaDesdeArchivoSerializado(RUTA_SER);
+			//agenda.cargaDesdeCSV(RUTA);
+			//agenda.guardaEnArchivoSerializado(RUTA_SER);
+			agenda.cargaDesdeArchivoSerializado(RUTA_SER);
 
 			int opcion;
 			while ( (opcion=menuPrincipal(!agenda.vacia()))!= 0) {
@@ -25,16 +26,19 @@ public class gestorAgendaList {
 					Contacto nuevo = Contacto.deTeclado(entrada);
 					if (nuevo!=null) agenda.anadeContacto(nuevo);
 					agenda.guardaEnCSV(RUTA);
+					agenda.guardaEnArchivoSerializado(RUTA_SER);
 					break;
 				case 3:
 					int pos = menuPosicion(agenda.numContactos());
 					agenda.borraContacto(pos-1); 
 					agenda.guardaEnCSV(RUTA);
+					agenda.guardaEnArchivoSerializado(RUTA_SER);
 					// el usuario ve posiciones desde 12
 
 				}	
 			}
-			agenda.guardaEnCSV(RUTA);
+			agenda.guardaEnArchivoSerializado(RUTA_SER);
+			//agenda.guardaEnCSV(RUTA);
 			System.out.println("Bye bye ...");
 		} // main
 

@@ -5,10 +5,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.nio.charset.Charset;
@@ -81,8 +83,7 @@ public class AgendaList implements Serializable {
 		
 		try (BufferedReader entrada = 
 				new BufferedReader (new FileReader(ruta))){
-			String linea;
-			
+			String linea;			
 			while ((linea=entrada.readLine()) != null) {								
 				Contacto contacto = Contacto.contactoFromCSV(linea);
 				contactos.add(contacto);	
@@ -106,27 +107,36 @@ public class AgendaList implements Serializable {
 		return false;	
 	}//guardaCSV
 	
+	public boolean guardaEnArchivoSerializado (String fileName) {
+		try (ObjectOutputStream salida = 
+				new ObjectOutputStream(new FileOutputStream(fileName))){
+			salida.writeObject(contactos);
+			return true;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;	
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;	
+		}
+	}//guardaSerial
+	
 	public boolean cargaDesdeArchivoSerializado(String fileName) {
 		File ruta = new File (fileName);
 		try (ObjectInputStream entrada = new ObjectInputStream(
 				new FileInputStream(ruta))) {
-			try {
 				ArrayList<Contacto> contact =
 						(ArrayList<Contacto>) entrada.readObject();
-				contactos.addAll(contact);
-				
-				
-			} catch (ClassNotFoundException e) {
-
-				e.printStackTrace();
-			}
-			return true;						
+				contactos.addAll(contact);								
+				return true;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return false;		
-	}
+	}//cargaSerial
 
 }

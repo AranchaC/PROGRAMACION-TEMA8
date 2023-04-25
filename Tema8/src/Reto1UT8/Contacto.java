@@ -28,7 +28,6 @@ public class Contacto implements Comparable<Contacto>, Serializable {
 		return nombre;
 	}
 		
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -78,12 +77,14 @@ public class Contacto implements Comparable<Contacto>, Serializable {
 	
 	public static Contacto contactoFromCSV(String linea) {
 		String nombre, telef;
+		Contacto contacto = new Contacto (null,null);
 		
 		String[] lineaSep = linea.split(",");
-		nombre =lineaSep[0];
-		telef = lineaSep[1];
-		
-		Contacto contacto = new Contacto (nombre,telef);
+		if (lineaSep != null) {
+			nombre =lineaSep[0];
+			telef = lineaSep[1];
+			contacto = new Contacto(nombre,telef);
+		}
 
 		return contacto;
 	}
