@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agenda xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="intro1.xsd">
+    <contacto>
+        <nombre filiacion="familia">Violeta</nombre>
+        <telefono fijo="si">641236547</telefono>
+        <ciudad>Madrid</ciudad>
+    </contacto>
+    <contacto>
+        <nombre filiacion="amigos">Rosa</nombre>
+        <telefono movil="si">651474747</telefono>
+        <ciudad>Madrid</ciudad>
+    </contacto>
+    <contacto>
+        <nombre filiacion="trabajo">Pepe</nombre>
+        <telefono fijo="si">632525252</telefono>
+        <ciudad>Madrid</ciudad>
+    </contacto>
+</agenda>

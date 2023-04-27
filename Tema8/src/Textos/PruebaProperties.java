@@ -39,10 +39,8 @@ public class PruebaProperties {
 		{
 			props.storeToXML(salida, "Usuarios de la app");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
