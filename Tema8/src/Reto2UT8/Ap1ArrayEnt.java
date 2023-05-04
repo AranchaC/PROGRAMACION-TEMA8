@@ -24,24 +24,22 @@ public class Ap1ArrayEnt {
 		try (DataInputStream entrada = 
 				new DataInputStream(new FileInputStream(RUTA))) {
 			for (int i=0; i<20; i++) {
+				//recorro el arrayList y añado lo que lee con .readInt().
 				enteros.add(entrada.readInt());				
-			}//for	
-			System.out.println("Contenido de la lista: "+enteros);
+			}//for
 		}//try
 		
 		//3.
 		//si no existe, dentro del catch:
-		//inserta 0 en array creado y escribe en disco.
+		//insert 0 en array creado con .add() y escribe en disco con .writeInt().
 		catch (FileNotFoundException e) {
 			
 			try (DataOutputStream salida = 
-					new DataOutputStream(new FileOutputStream(RUTA))) {
-				
+					new DataOutputStream(new FileOutputStream(RUTA))) {				
 				for (int i=0; i<20; i++) {
 					enteros.add(0);
 					salida.writeInt(0);
 				}//for
-				System.out.println("Números en la lista: "+enteros);
 			}// try
 			catch (IOException e1) {
 				e1.printStackTrace();
@@ -52,14 +50,13 @@ public class Ap1ArrayEnt {
 			e.printStackTrace();
 		}//catch
 		
-		//4.
+		//4. Paso por parámetro la ruta del archivo, y el modo "rws" antes estába "rwd".
 		try (RandomAccessFile fichero = 
 				new RandomAccessFile(RUTA,"rws")){
 			
 			//5 y 6.
-			while (fichero != null){
+			while (true){
 				System.out.println("Contenido de la lista: "+enteros);
-				//enteros.toString();
 				
 				/*
 				 * Para la posición, calculamos el nºde enteros que
@@ -68,38 +65,40 @@ public class Ap1ArrayEnt {
 				 * entre 4 para obtener el nº de enteros del fichero.
 				 */
 				
-				int pos;
 				long size = fichero.length();
 				size = size/4;
 				System.out.println("\nEl fichero tiene " + size + " enteros.");
 							
 				System.out.println("Dime una posición entre el 1 y el "+ size+" (negativo para salir): ");
-				pos = in.nextInt();
+				int pos = in.nextInt();
+				
+				// si la la pos es < 1 o > al tamaño de la lista, se sale del bucle.
 				if (pos < 1 || pos > enteros.size()) {
 					break;
 				}//if
-				pos--;//posición 1 es la 0, entonces decrementamos en 1.
 								
 				/*
-				 * nos situamos en la pos del nº a modificar.
+				 * nos situamos en la pos del nº a modificar con .seek().
 				 * y como el entero ocupa 4 bytes, ponemos *4.
 				 */
 				
+				pos--;//posición 1 es la 0, entonces decrementamos en 1.
 				fichero.seek(pos*4);
 				
-				//Leemos y mostramos el valor de dicha pos.
+				//Leemos y mostramos el valor de dicha pos con .readInt().
 				System.out.println("Valor actual: "+fichero.readInt());
 				
-				System.out.println("Dame un número.");
+				//Pido nuevo valor para actualizar con él la posición ya solicitada.
+				System.out.println("Dame un nuevo valor:");
 				int valor = in.nextInt();
 				
-				//Nos colocamos otra vez en la posición a modificar.
-				//Y escribimos en nuevo número en el archivo.
+				//Actualizamos con este valor el arrayList con .set(index,int).
+				//Y actualizamos también la posición del disco con .writeInt() y colocándonos 
+				//primero en la posición ya solicitada con .seek() y *4 nuevamente.
 				enteros.set(pos, valor);
 				fichero.seek(pos*4);
 				fichero.writeInt(valor);
-				
-								
+												
 			}//while
 			
 		} catch (FileNotFoundException e) {
@@ -109,6 +108,6 @@ public class Ap1ArrayEnt {
 		}
 		
 		
-	}
+	}//main
 
-}
+}//class

@@ -20,22 +20,24 @@ public class Ap2PruebaAemet {
 				String inputLine;
 				while ((inputLine = in.readLine()) != null) {
 					if (! inputLine.matches(".*periodo=\"14\".*")) continue;
-					Pattern patron = Pattern.compile(".*periodo=\"14\" (\\w+)=\"(\\w+)\">(\\d+).*");
-					Matcher concuerda = patron.matcher(inputLine);
-					if (concuerda.matches()) {
-						System.out.println(concuerda.group(1)); 
-						System.out.println(concuerda.group(2));
-						System.out.println(concuerda.group(3));
+					Pattern patron1 = Pattern.compile(".*<(\\w+) periodo=\"14\" .*\"(\\w+)\">(\\d+).*");
+					Matcher concuerda1 = patron1.matcher(inputLine);
+					if (concuerda1.matches()) {
+						System.out.println(concuerda1.group(1)+": "+concuerda1.group(2)+" "+concuerda1.group(3));
 					}//if
+					Pattern patron2 = Pattern.compile(".*<(\\w+) periodo=\"14\">(\\d+).*");
+					Matcher concuerda2 = patron2.matcher(inputLine);
+					if (concuerda2.matches()) {
+						System.out.println(concuerda2.group(1)+": "+concuerda2.group(2));
+					}//if
+
 				}//while
 				
 				in.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
