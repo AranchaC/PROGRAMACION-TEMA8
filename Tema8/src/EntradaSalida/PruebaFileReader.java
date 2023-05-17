@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class PruebaFileReader {
-	final static String RUTA_ARCHIVO = "prueba.txt";
+	final static String RUTA_ARCHIVO = "prueba2.txt";
 
 	public static void main(String[] args) {
 		File ruta = new File(RUTA_ARCHIVO);

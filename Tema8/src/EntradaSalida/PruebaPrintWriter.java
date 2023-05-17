@@ -15,7 +15,7 @@ public class PruebaPrintWriter {
 				new FileWriter (RUTA_ARCHIVO,Charset.forName
 						("UTF-8"),true))){			
 			salida.println("Buenos días.");
-			salida.println("Soy pepito grillo.");
+			salida.println("Soy pepito arancha.");
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

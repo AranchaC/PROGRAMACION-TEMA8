@@ -18,6 +18,7 @@ public class PruebaLecturaBinarios {
 			System.out.println(entrada.readDouble());
 			System.out.println(entrada.readUTF());
 			System.out.println(entrada.readLong());
+			System.out.println(entrada.readInt());
 			//entrada.readInt();
 
 		} catch (FileNotFoundException e) {

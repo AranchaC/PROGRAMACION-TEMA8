@@ -16,7 +16,8 @@ public class PruebaProperties {
 		File fich = new File(RUTA_CONFIG);
 		if (fich.canRead()) {
 			//cargo datos de un fichero xml.
-			try (FileInputStream entrada = new FileInputStream(fich);){				
+			try (FileInputStream entrada = new FileInputStream(fich);){	
+				System.out.println("Usuarios: ");
 				props.loadFromXML(entrada);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();

@@ -14,7 +14,8 @@ public class PruebaXML {
 		try (BufferedReader entrada = new BufferedReader (new FileReader(RUTA_XML));) {
 			String linea;
 			Pattern patron1 = Pattern.compile("\\s*<\\w*>(.*)<\\/\\w*>");
-			Pattern patron2 = Pattern.compile("\\s*<\\w* (\\w*)=\"(\\w*)\">(.*)<\\/\\w*>");
+			Pattern patron2 = Pattern.compile
+					("\\s*<\\w* (\\w*)=\"(\\w*)\">(.*)<\\/\\w*>");
 			
 			while ( (linea = entrada.readLine()) != null ) {
 				Matcher m1 = patron1.matcher(linea);
@@ -25,7 +26,8 @@ public class PruebaXML {
 					Matcher m2 = patron2.matcher(linea);
 					if (m2.matches()) {
 						//System.out.println(m2.groupCount());
-						System.out.println(m2.group(1) + ": " + m2.group(2) + ": " + m2.group(3));
+						System.out.println(m2.group(1) + ": " + m2.group(2) 
+						+ ": " + m2.group(3));
 						//System.out.println();
 					}					
 				}

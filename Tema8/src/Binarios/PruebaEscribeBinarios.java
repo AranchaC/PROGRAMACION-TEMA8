@@ -19,6 +19,7 @@ public class PruebaEscribeBinarios {
 			salida.writeDouble(12.12);
 			salida.writeUTF("Hola");
 			salida.writeLong(Integer.MAX_VALUE);
+			salida.writeInt(123456);
 		} 
 		//Importante el orden de las excepciones.
 		catch (FileNotFoundException e) {

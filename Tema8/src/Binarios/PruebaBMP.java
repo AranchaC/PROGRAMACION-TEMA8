@@ -10,7 +10,8 @@ public class PruebaBMP {
 	public static void main(String[] args) {
 		//18, 22
 		
-		try (RandomAccessFile fichero = new RandomAccessFile(RUTA_IMAGEN,"rw");) 
+		try (RandomAccessFile fichero = 
+				new RandomAccessFile(RUTA_IMAGEN,"rw");) 
 		//se pone nombre de la ruta de la imagen + modo.
 		//r=read/lectura, w=write/escritura
 		{

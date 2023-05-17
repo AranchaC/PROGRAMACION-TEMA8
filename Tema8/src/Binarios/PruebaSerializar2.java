@@ -19,7 +19,8 @@ public class PruebaSerializar2 {
 				new ObjectInputStream(new FileInputStream(RUTA_SER));)
 		{
 			try {
-				ArrayList<Producto> prods = (ArrayList<Producto>) entrada.readObject();
+				ArrayList<Producto> prods = 
+						(ArrayList<Producto>) entrada.readObject();
 				System.out.println(prods);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
