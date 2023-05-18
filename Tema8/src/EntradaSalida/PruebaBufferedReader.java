@@ -13,10 +13,11 @@ public class PruebaBufferedReader {
 	public static void main(String[] args) {
 		File ruta = new File(RUTA_ARCHIVO);
 		//Charset.availableCharsets().forEach( (a,b) -> System.out.println(a+" : "+b) );
-		System.out.println(Charset.availableCharsets().keySet());
+		//System.out.println(Charset.availableCharsets().keySet());
 		System.out.println("Por defecto: "+ Charset.defaultCharset().toString());
 				
-		try (BufferedReader entrada = new BufferedReader(new FileReader(ruta,Charset.forName("ISO-8859-1"))))	{
+		try (BufferedReader entrada = new BufferedReader(
+				new FileReader(ruta,Charset.forName("ISO-8859-1")))) {
 			String linea;
 			while ( (linea = entrada.readLine()) !=null) {
 				System.out.println(linea);
@@ -28,6 +29,7 @@ public class PruebaBufferedReader {
 		catch (IOException e) {
 			System.err.println("Problema leyendo datos del disco.");
 		}//catch
+		
 		
 		/*
 		 * 1. abrir archivo para lectura:

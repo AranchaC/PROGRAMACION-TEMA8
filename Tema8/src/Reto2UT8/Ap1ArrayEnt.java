@@ -74,6 +74,7 @@ public class Ap1ArrayEnt {
 				
 				// si la la pos es < 1 o > al tamaño de la lista, se sale del bucle.
 				if (pos < 1 || pos > enteros.size()) {
+					System.out.println("Adiós.");
 					break;
 				}//if
 								
@@ -97,7 +98,8 @@ public class Ap1ArrayEnt {
 				//primero en la posición ya solicitada con .seek() y *4 nuevamente.
 				enteros.set(pos, valor);
 				fichero.seek(pos*4);
-				fichero.writeInt(valor);
+				fichero.writeInt(valor);				
+				
 												
 			}//while
 			
