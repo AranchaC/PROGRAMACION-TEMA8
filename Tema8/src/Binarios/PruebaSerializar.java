@@ -31,6 +31,8 @@ public class PruebaSerializar {
 			e.printStackTrace();
 		}
 		
+		
+		
 	}
 
 }
